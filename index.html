@@ -26,6 +26,36 @@
     --mono:      'JetBrains Mono', monospace;
     --sans:      'Space Grotesk', sans-serif;
     --serif:     'Fraunces', serif;
+    --orb-opacity: 0.12;
+    --nav-bg:    rgba(7,8,13,0.75);
+    --mobile-nav-bg: rgba(7,8,13,0.97);
+  }
+
+  /* ── LIGHT THEME ── */
+  html.light {
+    --bg:        #f7f7fb;
+    --bg2:       #efeff6;
+    --card:      #ffffff;
+    --card2:     #f2f2fa;
+    --border:    rgba(0,0,0,0.08);
+    --border-hi: rgba(109,40,217,0.35);
+    --accent:    #7c3aed;
+    --accent2:   #6d28d9;
+    --teal:      #0d9488;
+    --amber:     #d97706;
+    --text:      #13131f;
+    --muted:     #9090a8;
+    --muted2:    #4a4a6a;
+    --green:     #16a34a;
+    --orb-opacity: 0.07;
+    --nav-bg:    rgba(247,247,251,0.82);
+    --mobile-nav-bg: rgba(247,247,251,0.98);
+  }
+
+  /* Smooth theme transition */
+  body, nav, .orb, .stack-card, .project-card, .edu-card,
+  .stat, .contact-wrap, footer, .nav-mobile {
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -56,11 +86,11 @@
     filter: blur(120px);
     pointer-events: none;
     z-index: 0;
-    opacity: 0.12;
+    opacity: var(--orb-opacity);
   }
   .orb-1 { width: 700px; height: 700px; background: var(--accent); top: -300px; right: -200px; }
   .orb-2 { width: 450px; height: 450px; background: var(--teal); bottom: 0; left: -200px; }
-  .orb-3 { width: 350px; height: 350px; background: var(--accent2); top: 60%; right: 5%; opacity: 0.08; }
+  .orb-3 { width: 350px; height: 350px; background: var(--accent2); top: 60%; right: 5%; }
 
   /* ── NAV ── */
   nav {
@@ -72,7 +102,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 clamp(1.25rem, 5%, 3rem);
-    background: rgba(7,8,13,0.75);
+    background: var(--nav-bg);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border-bottom: 1px solid var(--border);
@@ -146,7 +176,7 @@
     display: none;
     position: fixed;
     top: 60px; left: 0; right: 0;
-    background: rgba(7,8,13,0.97);
+    background: var(--mobile-nav-bg);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border-bottom: 1px solid var(--border);
@@ -780,6 +810,63 @@
     .stats-grid { grid-template-columns: 1fr; }
   }
 
+  /* ── THEME TOGGLE ── */
+  .theme-toggle {
+    position: relative;
+    width: 52px;
+    height: 26px;
+    border-radius: 100px;
+    background: var(--card2);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.3s, border-color 0.3s;
+    padding: 0;
+  }
+  .theme-toggle:hover { border-color: var(--accent); }
+
+  /* sliding knob */
+  .toggle-knob {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.35);
+  }
+  html.light .toggle-knob {
+    transform: translateX(26px);
+    background: var(--accent);
+  }
+
+  /* icons inside knob */
+  .toggle-knob svg {
+    position: absolute;
+    transition: opacity 0.25s, transform 0.25s;
+  }
+  .icon-moon { opacity: 1;  transform: scale(1)   rotate(0deg); }
+  .icon-sun  { opacity: 0;  transform: scale(0.5) rotate(90deg); }
+  html.light .icon-moon { opacity: 0;  transform: scale(0.5) rotate(-90deg); }
+  html.light .icon-sun  { opacity: 1;  transform: scale(1)   rotate(0deg); }
+
+  /* track tint */
+  html.light .theme-toggle { background: #e8e0ff; border-color: rgba(109,40,217,0.25); }
+
+  /* Light mode grain adjustment */
+  html.light body::after { opacity: 0.02; }
+
+  /* Light mode hero status */
+  html.light .hero-status {
+    background: rgba(22,163,74,0.08);
+    border-color: rgba(22,163,74,0.25);
+  }
+
   /* ── SCROLLBAR ── */
   ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
@@ -804,6 +891,12 @@
     <li><a href="#contact">contact</a></li>
   </ul>
   <a href="mailto:rahulrajendrashewale@gmail.com" class="nav-cta">hire_me()</a>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    <span class="toggle-knob">
+      <svg class="icon-moon" width="10" height="10" viewBox="0 0 24 24" fill="white" stroke="none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      <svg class="icon-sun"  width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/></svg>
+    </span>
+  </button>
   <button class="nav-toggle" aria-label="Toggle menu" id="navToggle">
     <span></span><span></span><span></span>
   </button>
@@ -1124,6 +1217,18 @@
 </footer>
 
 <script>
+  // Theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
+  // Respect saved preference or system preference
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (saved === 'light' || (!saved && !prefersDark)) html.classList.add('light');
+  themeToggle.addEventListener('click', () => {
+    html.classList.toggle('light');
+    localStorage.setItem('theme', html.classList.contains('light') ? 'light' : 'dark');
+  });
+
   // Fade-in on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
