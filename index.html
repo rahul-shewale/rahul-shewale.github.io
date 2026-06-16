@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Rahul Shewale — Full Stack Engineer</title>
+<title>Rahul Shewale — Software Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet" />
@@ -31,7 +31,6 @@
     --mobile-nav-bg: rgba(7,8,13,0.97);
   }
 
-  /* ── LIGHT THEME ── */
   html.light {
     --bg:        #f7f7fb;
     --bg2:       #efeff6;
@@ -52,7 +51,6 @@
     --mobile-nav-bg: rgba(247,247,251,0.98);
   }
 
-  /* Smooth theme transition */
   body, nav, .orb, .stack-card, .project-card, .edu-card,
   .stat, .contact-wrap, footer, .nav-mobile {
     transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
@@ -69,7 +67,6 @@
     overflow-x: hidden;
   }
 
-  /* Grain */
   body::after {
     content: '';
     position: fixed;
@@ -79,7 +76,6 @@
     z-index: 9999;
   }
 
-  /* Orbs */
   .orb {
     position: fixed;
     border-radius: 50%;
@@ -150,7 +146,6 @@
   }
   .nav-cta:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
 
-  /* Hamburger */
   .nav-toggle {
     display: none;
     flex-direction: column;
@@ -295,7 +290,7 @@
     font-size: clamp(0.78rem, 1.8vw, 0.92rem);
     color: var(--muted2);
     margin: 1.5rem 0 1.75rem;
-    max-width: 600px;
+    max-width: 640px;
     line-height: 1.7;
   }
   .hero-sub .chip {
@@ -308,9 +303,19 @@
     font-size: 0.88em;
     margin: 0 1px;
   }
+  .hero-sub .chip-teal {
+    display: inline;
+    color: var(--teal);
+    background: rgba(45,212,191,0.07);
+    border: 1px solid rgba(45,212,191,0.2);
+    padding: 0.1em 0.45em;
+    border-radius: 3px;
+    font-size: 0.88em;
+    margin: 0 1px;
+  }
 
   .hero-desc {
-    max-width: 520px;
+    max-width: 540px;
     color: var(--muted2);
     font-size: clamp(0.9rem, 2vw, 1rem);
     line-height: 1.8;
@@ -401,6 +406,7 @@
   .about-text p:last-child { margin-bottom: 0; }
   .about-text strong { color: var(--text); font-weight: 500; }
   .about-text .hi { color: var(--teal); }
+  .about-text .hi-purple { color: var(--accent2); }
 
   .stats-grid {
     display: grid;
@@ -463,6 +469,7 @@
     padding-bottom: 0.7rem;
     border-bottom: 1px solid var(--border);
   }
+  .stack-card-title.purple { color: var(--accent2); }
   .tags {
     display: flex;
     flex-wrap: wrap;
@@ -479,6 +486,11 @@
     transition: all 0.15s;
   }
   .tag:hover { background: rgba(139,92,246,0.1); border-color: var(--border-hi); color: var(--accent2); }
+  .tag.learning {
+    color: var(--teal);
+    border-color: rgba(45,212,191,0.2);
+    background: rgba(45,212,191,0.05);
+  }
 
   /* ── EXPERIENCE ── */
   .timeline {
@@ -670,6 +682,7 @@
     transition: border-color 0.2s, transform 0.2s;
   }
   .edu-card:hover { border-color: var(--border-hi); transform: translateY(-3px); }
+  .edu-card.featured { grid-column: span 2; }
   .edu-year {
     font-family: var(--mono);
     font-size: 0.65rem;
@@ -698,6 +711,23 @@
     margin-top: 0.5rem;
     opacity: 0.8;
   }
+  .cert-list {
+    list-style: none;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .cert-list li {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted2);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    line-height: 1.5;
+  }
+  .cert-list li::before { content: '▸'; color: var(--accent2); flex-shrink: 0; font-size: 0.7rem; margin-top: 2px; }
 
   /* ── CONTACT ── */
   .contact-wrap {
@@ -795,6 +825,7 @@
     .projects-grid { grid-template-columns: 1fr; }
     .project-card.featured { grid-column: span 1; }
     .edu-grid { grid-template-columns: 1fr; }
+    .edu-card.featured { grid-column: span 1; }
   }
 
   @media (max-width: 700px) {
@@ -825,7 +856,6 @@
   }
   .theme-toggle:hover { border-color: var(--accent); }
 
-  /* sliding knob */
   .toggle-knob {
     position: absolute;
     top: 3px;
@@ -845,7 +875,6 @@
     background: var(--accent);
   }
 
-  /* icons inside knob */
   .toggle-knob svg {
     position: absolute;
     transition: opacity 0.25s, transform 0.25s;
@@ -855,19 +884,13 @@
   html.light .icon-moon { opacity: 0;  transform: scale(0.5) rotate(-90deg); }
   html.light .icon-sun  { opacity: 1;  transform: scale(1)   rotate(0deg); }
 
-  /* track tint */
   html.light .theme-toggle { background: #e8e0ff; border-color: rgba(109,40,217,0.25); }
-
-  /* Light mode grain adjustment */
   html.light body::after { opacity: 0.02; }
-
-  /* Light mode hero status */
   html.light .hero-status {
     background: rgba(22,163,74,0.08);
     border-color: rgba(22,163,74,0.25);
   }
 
-  /* ── SCROLLBAR ── */
   ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: rgba(139,92,246,0.25); border-radius: 4px; }
@@ -888,6 +911,7 @@
     <li><a href="#stack">stack</a></li>
     <li><a href="#experience">experience</a></li>
     <li><a href="#projects">projects</a></li>
+    <li><a href="#education">education</a></li>
     <li><a href="#contact">contact</a></li>
   </ul>
   <a href="mailto:rahulrajendrashewale@gmail.com" class="nav-cta">hire_me()</a>
@@ -906,6 +930,7 @@
   <a href="#stack" onclick="closeMobileNav()">stack</a>
   <a href="#experience" onclick="closeMobileNav()">experience</a>
   <a href="#projects" onclick="closeMobileNav()">projects</a>
+  <a href="#education" onclick="closeMobileNav()">education</a>
   <a href="#contact" onclick="closeMobileNav()">contact</a>
   <a href="mailto:rahulrajendrashewale@gmail.com">rahulrajendrashewale@gmail.com</a>
 </div>
@@ -918,15 +943,18 @@
     <span class="italic">Shewale.</span>
   </h1>
   <p class="hero-sub">
-    Full Stack Engineer &mdash; 
-    <span class="chip">PHP</span>
+    Software Engineer &mdash;
     <span class="chip">Laravel</span>
     <span class="chip">Angular</span>
     <span class="chip">Ionic</span>
+    &mdash; expanding into
+    <span class="chip-teal">Python</span>
+    <span class="chip-teal">Django</span>
+    <span class="chip-teal">AI</span>
     &mdash; Mumbai, India
   </p>
   <p class="hero-desc">
-    4+ years building production-grade web and mobile applications end-to-end. From Blue Moon SOAP API integrations at Entrata's property platform to SageWorkspace — a SaaS booking app serving 500+ units — I own the full stack.
+    4+ years building production-grade web and mobile applications end-to-end. From Blue Moon SOAP API integrations at Entrata to SageWorkspace — a SaaS booking platform serving 500+ units — I own the full stack. Now expanding into Python, AI frameworks, and forward-deployed engineering.
   </p>
   <div class="hero-actions">
     <a href="#projects" class="btn-primary">View my work</a>
@@ -956,11 +984,11 @@
   <h2>A bit about me</h2>
   <div class="about-grid">
     <div class="about-text">
-      <p>I'm a <strong>Full Stack Engineer</strong> based in Mumbai, India, with 4+ years of experience building web and mobile applications end-to-end. I specialise in <strong>Laravel APIs, Angular frontends, and Ionic mobile apps</strong>, with a focus on integrations that actually work under real load.</p>
+      <p>I'm a <strong>Software Engineer</strong> based in Mumbai, India, with 4+ years of experience building web and mobile applications end-to-end. My core is <strong>Laravel, Angular, and Ionic</strong> — and I'm actively expanding into <strong class="hi">Python (Django / FastAPI)</strong> and AI-integrated systems.</p>
       <p>At <strong class="hi">Entrata</strong>, I owned the Blue Moon SOAP API integration across Prospect Portal, Resident Portal, and Lease Signing — a platform serving <strong>20,000+ US property units</strong>.</p>
-      <p>At <strong class="hi">Ebrandz</strong>, I built <strong>SageWorkspace</strong> from scratch — a workspace and virtual office booking app handling 500+ bookings with Stripe, Xero, and KISI integrations wired together end-to-end with zero manual steps.</p>
-      <p>I use <strong>Cursor, Claude, and ChatGPT</strong> as pair-programming partners across every project — for debugging, code generation, and architecture validation — which has cut my production issue resolution time by ~30%.</p>
-      <p>I hold a <strong>B.E. in Computer Science</strong> from Sandip Institute of Technology, Nashik (2021). I joined Entrata during my final semester and graduated July 2021.</p>
+      <p>At <strong class="hi">Ebrandz</strong>, I built <strong>SageWorkspace</strong> from scratch — a workspace and virtual office booking platform handling 500+ bookings with Stripe, Xero, and KISI integrations fully automated end-to-end.</p>
+      <p>I use <strong class="hi-purple">Cursor, Claude, and ChatGPT</strong> as daily pair-programming partners for debugging, code generation, and architecture validation — cutting production issue resolution time by ~30%. I think of AI tools as part of the stack, not a shortcut.</p>
+      <p>I hold a <strong>B.E. in Computer Science</strong> from Sandip Institute of Technology, Nashik (2021), and 5 Python certifications from the University of Michigan via Coursera.</p>
     </div>
     <div class="stats-grid">
       <div class="stat">
@@ -989,12 +1017,21 @@
   <h2>Tools &amp; Technologies</h2>
   <div class="stack-grid">
     <div class="stack-card">
+      <div class="stack-card-title purple">Python &amp; AI</div>
+      <div class="tags">
+        <span class="tag learning">Python</span>
+        <span class="tag learning">Django</span>
+        <span class="tag learning">FastAPI</span>
+        <span class="tag learning">NumPy / Pandas</span>
+        <span class="tag learning">REST APIs</span>
+      </div>
+    </div>
+    <div class="stack-card">
       <div class="stack-card-title">Backend</div>
       <div class="tags">
         <span class="tag">PHP</span>
         <span class="tag">Laravel</span>
         <span class="tag">CodeIgniter</span>
-        <span class="tag">REST APIs</span>
         <span class="tag">Webhooks</span>
         <span class="tag">Cron Jobs</span>
       </div>
@@ -1023,6 +1060,18 @@
       <div class="tags">
         <span class="tag">MySQL</span>
         <span class="tag">MongoDB</span>
+        <span class="tag">SQL</span>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-card-title">AI &amp; Dev Tools</div>
+      <div class="tags">
+        <span class="tag">Cursor</span>
+        <span class="tag">Claude AI</span>
+        <span class="tag">ChatGPT</span>
+        <span class="tag">Prompt Engineering</span>
+        <span class="tag">Git</span>
+        <span class="tag">Docker</span>
       </div>
     </div>
     <div class="stack-card">
@@ -1036,16 +1085,6 @@
         <span class="tag">Zapier</span>
         <span class="tag">Meta Lead Ads</span>
         <span class="tag">Google Maps API</span>
-      </div>
-    </div>
-    <div class="stack-card">
-      <div class="stack-card-title">Tools &amp; AI</div>
-      <div class="tags">
-        <span class="tag">Git</span>
-        <span class="tag">Docker</span>
-        <span class="tag">Cursor</span>
-        <span class="tag">Claude AI</span>
-        <span class="tag">ChatGPT</span>
       </div>
     </div>
   </div>
@@ -1062,13 +1101,13 @@
       <div class="exp-role">Software Engineer</div>
       <div class="exp-company">Ebrandz LLP</div>
       <ul class="exp-bullets">
-        <li>Built SageWorkspace — workspace and virtual office booking app from scratch, serving 500+ bookings across web and mobile</li>
+        <li>Built SageWorkspace — workspace and virtual office booking platform from scratch, serving 500+ bookings across web and mobile</li>
         <li>Developed and maintained 30+ REST APIs consumed by Angular web app and Ionic mobile app</li>
         <li>Optimised MySQL queries and indexing — reduced average API response time from ~800ms to under 200ms</li>
         <li>Integrated Stripe for subscriptions, wallet top-ups, and one-time payments — reduced payment failures by 35%</li>
         <li>Integrated Xero to auto-generate invoices per transaction; KISI Door to automate access for 200+ members — zero manual provisioning</li>
         <li>Built Lead Detector — automated pipeline ingesting 1,000+ leads/day from Meta Lead Ads with enrichment, scoring, and webhook delivery to GoHighLevel and Zapier</li>
-        <li>Used Cursor, Claude, and ChatGPT across all projects for debugging, code generation, and architecture decisions — cut production issue resolution time by ~30%</li>
+        <li>Embedded AI tools (Cursor, Claude, ChatGPT) into daily workflow for debugging, code generation, and architecture validation — cut production issue resolution time by ~30%</li>
       </ul>
       <div class="exp-tags">
         <span class="exp-tag">Laravel</span>
@@ -1088,7 +1127,7 @@
       <div class="exp-role">Software Engineer</div>
       <div class="exp-company">Entrata — Property Management Software</div>
       <ul class="exp-bullets">
-        <li>Worked on Entrata's Leasing product — multi-module property management platform for 20,000+ residential units across the US (entrata.com)</li>
+        <li>Worked on Entrata's Leasing product — multi-module property management platform for 20,000+ residential units across the US</li>
         <li>Integrated and maintained the Blue Moon SOAP API — XML-based requests/responses for lease form operations, field population, and submissions</li>
         <li>Built dynamic lease form generation — field setup, mapping, and configuration for Blue Moon documents inside the leasing platform</li>
         <li>Developed features across Prospect Portal, Resident Portal, and Lease Signing — forms rendered correctly, fields populated from prospect/resident data, signed documents stored</li>
@@ -1174,9 +1213,9 @@
   </div>
 </section>
 
-<!-- Education -->
+<!-- Education & Certifications -->
 <section id="education" class="fade-in">
-  <div class="label">education &amp; certification</div>
+  <div class="label">education &amp; certifications</div>
   <h2>Credentials</h2>
   <div class="edu-grid">
     <div class="edu-card">
@@ -1190,6 +1229,18 @@
       <div class="edu-degree">Ionic — Build iOS, Android &amp; Web Apps with Ionic &amp; Angular</div>
       <div class="edu-school">Certified course covering cross-platform mobile development with Ionic and Angular</div>
     </div>
+    <div class="edu-card featured">
+      <div class="edu-year">Jun – Aug 2020 · Coursera · University of Michigan</div>
+      <div class="edu-degree">Python for Everybody Specialisation</div>
+      <div class="edu-school">5 certified courses covering Python fundamentals, data structures, web data access, and databases</div>
+      <ul class="cert-list">
+        <li>Programming for Everybody (Getting Started with Python) — Jun 2020</li>
+        <li>Python Data Structures — Jul 2020</li>
+        <li>Using Python to Access Web Data — Jul 2020</li>
+        <li>Using Databases with Python — Aug 2020</li>
+        <li>Technical Support Fundamentals (Google) — Jul 2020</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -1198,7 +1249,7 @@
   <div class="label">contact</div>
   <h2>Let's build something</h2>
   <div class="contact-wrap">
-    <p>Open to discussing interesting projects, full-time opportunities, or a good technical challenge. If you have one, let's talk.</p>
+    <p>Open to discussing interesting projects, full-time opportunities, or a good technical challenge — especially in Python, AI engineering, or full-stack product work. If you have one, let's talk.</p>
     <a href="mailto:rahulrajendrashewale@gmail.com" class="contact-email">rahulrajendrashewale@gmail.com</a>
     <br />
     <a href="mailto:rahulrajendrashewale@gmail.com" class="btn-primary" style="display:inline-block;">Send a message</a>
@@ -1213,14 +1264,13 @@
 
 <footer>
   <span>© 2026 Rahul Shewale</span>
-  <span>Mumbai, India · Full Stack Engineer</span>
+  <span>Mumbai, India · Software Engineer · Python &amp; AI</span>
 </footer>
 
 <script>
   // Theme toggle
   const themeToggle = document.getElementById('themeToggle');
   const html = document.documentElement;
-  // Respect saved preference or system preference
   const saved = localStorage.getItem('theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   if (saved === 'light' || (!saved && !prefersDark)) html.classList.add('light');
